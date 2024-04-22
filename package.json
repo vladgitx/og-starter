@@ -1,0 +1,29 @@
+{
+  "name": "node-starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "dist/index.js",
+  "types": "dist/types/index.d.ts",
+  "scripts": {
+    "start": "npm run build && node dist/index.js",
+    "lint": "npx eslint src/**/*.ts",
+    "build": "rollup -c",
+    "pre-commit": "npm run lint && npm run build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
+    "@types/node": "^20.5.7",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "rollup": "^4.9.5",
+    "rollup-plugin-delete": "^2.0.0",
+    "tslib": "^2.6.2",
+    "typescript": "^5.2.2",
+    "typescript-eslint": "^7.7.0"
+  }
+}
