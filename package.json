@@ -1,18 +1,20 @@
 {
-  "name": "node-starter",
+  "name": "og-starter",
   "version": "1.0.0",
-  "description": "",
+  "description": "Starter project for Open Godfather.",
   "main": "dist/index.js",
   "types": "dist/types/index.d.ts",
   "scripts": {
-    "start": "npm run build && node dist/index.js",
     "lint": "npx eslint src/**/*.ts",
     "build": "rollup -c",
-    "pre-commit": "npm run lint && npm run build"
+    "start": "npm run build && cd ./dist && omp-server.exe"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "dependencies": {
+    "open-godfather": "github:vladgitx/open-godfather"
+  },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
     "@rollup/plugin-node-resolve": "^15.2.3",
