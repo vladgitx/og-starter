@@ -2,10 +2,7 @@
   "name": "og-starter",
   "version": "1.0.0",
   "description": "Starter project for Open Godfather.",
-  "main": "dist/index.js",
-  "types": "dist/types/index.d.ts",
   "scripts": {
-    "lint": "npx eslint src/**/*.ts",
     "build": "rollup -c",
     "start": "npm run build && cd ./dist && omp-server.exe"
   },
@@ -13,20 +10,17 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@rollup/plugin-json": "^6.1.0",
     "open-godfather": "github:vladgitx/open-godfather"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.7",
+    "@rollup/plugin-json": "^6.1.0",
     "@rollup/plugin-node-resolve": "^15.2.3",
     "@rollup/plugin-typescript": "^11.1.6",
     "@types/node": "^20.5.7",
-    "eslint": "^8.57.0",
-    "eslint-config-prettier": "^9.1.0",
     "rollup": "^4.9.5",
     "rollup-plugin-copy": "^3.5.0",
     "tslib": "^2.6.2",
-    "typescript": "^5.2.2",
-    "typescript-eslint": "^7.7.0"
+    "typescript": "^5.2.2"
   }
 }
