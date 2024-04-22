@@ -11,7 +11,6 @@ export default {
 		format: "cjs",
 	},
 	plugins: [
-		del({ targets: "./dist/*" }),
 		typescript({
 			tsconfig: "./tsconfig.json",
 		}),
