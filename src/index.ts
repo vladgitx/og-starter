@@ -2,7 +2,11 @@
 ** This is just an example script, you can delete everything below.
 */
 
-import { WeaponsEnum, og } from "open-godfather"
+import { WeaponSkillsEnum, WeaponsEnum, og } from "open-godfather"
+
+og.events.on("init", () => {
+    og.server.hour = 21
+})
 
 og.events.on("playerConnect", async (player) => {
     const response = await player.dialog.show.list("Wanna spawn?", ["Los Santos", "Las Venturas", "San Fiero"], "Select", "Leave")
@@ -19,20 +23,34 @@ og.events.on("playerConnect", async (player) => {
     }
 
     const SPAWNS = [
-        new og.Vector3(2481.1885, -1536.7186, 24.1467), // Los Santos
-        new og.Vector3(2087.9902, 1516.5336, 10.8203), // Las Venturas
-        new og.Vector3(-2417.6458, 970.1491, 45.2969), // San Fiero
+        { position: new og.Vector3(2481.1885, -1536.7186, 24.1467), rotation: 273.4944 }, // Los Santos
+        { position: new og.Vector3(2087.9902, 1516.5336, 10.8203), rotation: 48.93 }, // Las Venturas
+        { position: new og.Vector3(-2287.5027, 149.1875, 35.3125), rotation: 266.3989 }, // San Fiero
     ]
 
-    player.spawn(SPAWNS[response.item])
+    player.spawn(SPAWNS[response.item].position, SPAWNS[response.item].rotation)
 
+    player.skin = 211
     player.cash = 450
-    player.weapons.add(WeaponsEnum.Colt45, 9999)
+
+    player.weapons.add(WeaponsEnum.Colt45, 99999)
+    player.weapons.setSkill(WeaponSkillsEnum.Colt45, 1)
 
     player.sendMessage("Welcome to Open Godfather! Type /vx to spawn a vehicle.")
 })
 
-og.commands.add("/vx", ["/v", "/veh", "/vehicle"], (player, modelParam) => {
+og.events.on("playerCommand", (player, cmdText, command, call) => {
+    // If you don't have this listener, players won't be able to use commands
+
+    if (command) {
+        // If the command exists, call it
+        call()
+    } else {
+        player.sendMessage("Unknown command.")
+    }
+})
+
+og.commands.add("/vx", [], (player, modelParam) => {
     if (!modelParam) {
         player.sendMessage("Usage: /vx [model ID]")
         return
