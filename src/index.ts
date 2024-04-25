@@ -36,18 +36,7 @@ og.events.on("playerConnect", async (player) => {
     player.weapons.add(WeaponsEnum.Colt45, 99999)
     player.weapons.setSkill(WeaponSkillsEnum.Colt45, 1)
 
-    player.sendMessage("Welcome to Open Godfather! Type /vx to spawn a vehicle.")
-})
-
-og.events.on("playerCommand", (player, cmdText, command, call) => {
-    // If you don't have this listener, players won't be able to use commands
-
-    if (command) {
-        // If the command exists, call it
-        call()
-    } else {
-        player.sendMessage("Unknown command.")
-    }
+    player.sendMessage("Welcome to Open Godfather! Type /vx to spawn a vehicle.", "a069c7")
 })
 
 og.commands.add("/vx", [], (player, modelParam) => {
